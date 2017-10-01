@@ -43,6 +43,12 @@ int main(int, char**)
     {
         // wait for a new frame from camera and store it into 'frame'
         cap.read(frame);
+		// Perform operations on the frame here
+		// For example convert to Grayscale
+		cvtColor(frame, frame, CV_BGR2GRAY);
+		// Overlay Text on the video frame 
+		putText(frame, "{Real Nomad}", Point2f(100, 100), FONT_HERSHEY_SCRIPT_COMPLEX, 2, Scalar(0, 0, 255, 255));
+
         // check if we succeeded
         if (frame.empty()) {
             cerr << "ERROR! blank frame grabbed\n";
